@@ -1,25 +1,24 @@
 package ru.netology.radio;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RadioTest {
 
-   //Тестируем переключение станций кнопкой NEXT
+    //Тестируем переключение станций кнопкой NEXT
     @Test
-    public void NextStationFirstTest(){
+    public void NextStationFirstTest() {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(9);
-       radio.NextStation();
-    int actual = radio.getCurrentRadioStation();
-   int expected = 0;
-   assertEquals(expected, actual);
+        radio.NextStation();
+        int actual = radio.getCurrentRadioStation();
+        int expected = 0;
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void NextStationSecondTest(){
+    public void NextStationSecondTest() {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(8);
         radio.NextStation();
@@ -29,7 +28,7 @@ public class RadioTest {
     }
 
     @Test
-    public void NextStationThirdTest(){
+    public void NextStationThirdTest() {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(0);
         radio.NextStation();
@@ -40,7 +39,7 @@ public class RadioTest {
 
     //Тестируем переключение станций кнопкой PREV
     @Test
-    public void PrevStationFirstTest(){
+    public void PrevStationFirstTest() {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(0);
         radio.PrevStation();
@@ -50,7 +49,7 @@ public class RadioTest {
     }
 
     @Test
-    public void PrevStationSecondTest(){
+    public void PrevStationSecondTest() {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(9);
         radio.PrevStation();
@@ -60,7 +59,7 @@ public class RadioTest {
     }
 
     @Test
-    public void PrevStationThirdTest(){
+    public void PrevStationThirdTest() {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(1);
         radio.PrevStation();
@@ -72,7 +71,7 @@ public class RadioTest {
 
     //Тестируем переключение станций с помощью указания номера станции
     @Test
-    public void NumberStationFirstTest(){
+    public void NumberStationFirstTest() {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(10);
         int actual = radio.getCurrentRadioStation();
@@ -81,7 +80,7 @@ public class RadioTest {
     }
 
     @Test
-    public void NumberStationSecondTest(){
+    public void NumberStationSecondTest() {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(8);
         int actual = radio.getCurrentRadioStation();
@@ -90,7 +89,7 @@ public class RadioTest {
     }
 
     @Test
-    public void NumberStationThirdTest(){
+    public void NumberStationThirdTest() {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(0);
         int actual = radio.getCurrentRadioStation();
@@ -99,7 +98,7 @@ public class RadioTest {
     }
 
     @Test
-    public void NumberStationForthTest(){
+    public void NumberStationForthTest() {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(1);
         int actual = radio.getCurrentRadioStation();
@@ -108,7 +107,7 @@ public class RadioTest {
     }
 
     @Test
-    public void NumberStationFifthTest(){
+    public void NumberStationFifthTest() {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(-1);
         int actual = radio.getCurrentRadioStation();
@@ -120,49 +119,60 @@ public class RadioTest {
     @Test
     public void CreaseVolumeFirstTest() {
         Radio radio = new Radio();
-        for (int i = 0; i < 3; i++) {
-            radio.IncreaseVolume();
-        }
-
+        radio.setCurrentVolume(10);
+        radio.IncreaseVolume();
         int actual = radio.getCurrentVolume();
-        int expected = 3;
+        int expected = 10;
         assertEquals(expected, actual);
     }
 
     @Test
     public void CreaseVolumeSecondTest() {
         Radio radio = new Radio();
-        for (int i = 0; i < 11; i++) {
-            radio.IncreaseVolume();
-        }
-
+        radio.setCurrentVolume(9);
+        radio.IncreaseVolume();
         int actual = radio.getCurrentVolume();
         int expected = 10;
         assertEquals(expected, actual);
     }
 
-        @Test
-        public void CreaseVolumeThirdTest() {
-            Radio radio = new Radio();
-            for (int i = 0; i < 1; i++) {
-                radio.IncreaseVolume();
-            }
-
-            int actual = radio.getCurrentVolume();
-            int expected = 1;
-            assertEquals(expected, actual);
+    @Test
+    public void CreaseVolumeThirdTest() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(0);
+        radio.IncreaseVolume();
+        int actual = radio.getCurrentVolume();
+        int expected = 1;
+        assertEquals(expected, actual);
     }
+
+    @Test
+    public void CreaseVolumeFourthTest() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(-1);
+        radio.IncreaseVolume();
+        int actual = radio.getCurrentVolume();
+        int expected = 1;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void CreaseVolumeFifthTest() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(11);
+        radio.IncreaseVolume();
+        int actual = radio.getCurrentVolume();
+        int expected = 1;
+        assertEquals(expected, actual);
+    }
+
 
     //Тестируем уменьшение звука
     @Test
     public void DecreaseVolumeFirstTest() {
         Radio radio = new Radio();
-        for (int i = 0; i < 10; i++) {
-            radio.IncreaseVolume();
-        }
-        for (int i = 0; i < 1; i++) {
-            radio.DecreaseVolume();
-        }
+        radio.setCurrentVolume(10);
+        radio.DecreaseVolume();
         int actual = radio.getCurrentVolume();
         int expected = 9;
         assertEquals(expected, actual);
@@ -171,10 +181,8 @@ public class RadioTest {
     @Test
     public void DecreaseVolumeSecondTest() {
         Radio radio = new Radio();
-
-        for (int i = 0; i < 1; i++) {
-            radio.DecreaseVolume();
-        }
+        radio.setCurrentVolume(0);
+        radio.DecreaseVolume();
         int actual = radio.getCurrentVolume();
         int expected = 0;
         assertEquals(expected, actual);
@@ -183,15 +191,22 @@ public class RadioTest {
     @Test
     public void DecreaseVolumeThirdTest() {
         Radio radio = new Radio();
-        for (int i = 0; i < 1; i++) {
-            radio.IncreaseVolume();
-        }
-        for (int i = 0; i < 10; i++) {
-            radio.DecreaseVolume();
-        }
+        radio.setCurrentVolume(1);
+        radio.DecreaseVolume();
         int actual = radio.getCurrentVolume();
         int expected = 0;
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void DecreaseVolumeFourthTest() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(-1);
+        radio.DecreaseVolume();
+        int actual = radio.getCurrentVolume();
+        int expected = 0;
+        assertEquals(expected, actual);
+    }
+
 
 }
