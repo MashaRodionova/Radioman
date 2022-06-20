@@ -12,9 +12,7 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(9);
         radio.NextStation();
-        int actual = radio.getCurrentRadioStation();
-        int expected = 0;
-        assertEquals(expected, actual);
+        assertEquals(0, radio.getCurrentRadioStation());
     }
 
     @Test
@@ -22,9 +20,7 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(8);
         radio.NextStation();
-        int actual = radio.getCurrentRadioStation();
-        int expected = 9;
-        assertEquals(expected, actual);
+        assertEquals(9, radio.getCurrentRadioStation());
     }
 
     @Test
@@ -32,9 +28,39 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(0);
         radio.NextStation();
-        int actual = radio.getCurrentRadioStation();
-        int expected = 1;
-        assertEquals(expected, actual);
+        assertEquals(1, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void NextStationFourthTest() {
+        Radio radio = new Radio();
+        radio.setCurrentRadioStation(10);
+        radio.NextStation();
+        assertEquals(1, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void NextStationFifthTest() {
+        Radio radio = new Radio();
+        radio.setCurrentRadioStation(1);
+        radio.NextStation();
+        assertEquals(2, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void NextStationSixthTest() {
+        Radio radio = new Radio();
+        radio.setCurrentRadioStation(-1);
+        radio.NextStation();
+        assertEquals(1, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void NextStationSeventhTest() {
+        Radio radio = new Radio();
+        radio.setCurrentRadioStation(6);
+        radio.NextStation();
+        assertEquals(7, radio.getCurrentRadioStation());
     }
 
     //Тестируем переключение станций кнопкой PREV
@@ -43,9 +69,7 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(0);
         radio.PrevStation();
-        int actual = radio.getCurrentRadioStation();
-        int expected = 9;
-        assertEquals(expected, actual);
+        assertEquals(9, radio.getCurrentRadioStation());
     }
 
     @Test
@@ -53,9 +77,7 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(9);
         radio.PrevStation();
-        int actual = radio.getCurrentRadioStation();
-        int expected = 8;
-        assertEquals(expected, actual);
+        assertEquals(8, radio.getCurrentRadioStation());
     }
 
     @Test
@@ -63,9 +85,39 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(1);
         radio.PrevStation();
-        int actual = radio.getCurrentRadioStation();
-        int expected = 0;
-        assertEquals(expected, actual);
+        assertEquals(0, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void PrevStationFourthTest() {
+        Radio radio = new Radio();
+        radio.setCurrentRadioStation(-1);
+        radio.PrevStation();
+        assertEquals(9, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void PrevStationFifthTest() {
+        Radio radio = new Radio();
+        radio.setCurrentRadioStation(10);
+        radio.PrevStation();
+        assertEquals(9, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void PrevStationSixthTest() {
+        Radio radio = new Radio();
+        radio.setCurrentRadioStation(8);
+        radio.PrevStation();
+        assertEquals(7, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void PrevStationSeventhTest() {
+        Radio radio = new Radio();
+        radio.setCurrentRadioStation(5);
+        radio.PrevStation();
+        assertEquals(4, radio.getCurrentRadioStation());
     }
 
 
@@ -74,66 +126,67 @@ public class RadioTest {
     public void NumberStationFirstTest() {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(10);
-        int actual = radio.getCurrentRadioStation();
-        int expected = 0;
-        assertEquals(expected, actual);
+        assertEquals(0, radio.getCurrentRadioStation());
     }
 
     @Test
     public void NumberStationSecondTest() {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(8);
-        int actual = radio.getCurrentRadioStation();
-        int expected = 8;
-        assertEquals(expected, actual);
+        assertEquals(8, radio.getCurrentRadioStation());
     }
 
     @Test
     public void NumberStationThirdTest() {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(0);
-        int actual = radio.getCurrentRadioStation();
-        int expected = 0;
-        assertEquals(expected, actual);
+        assertEquals(0, radio.getCurrentRadioStation());
     }
 
     @Test
     public void NumberStationForthTest() {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(1);
-        int actual = radio.getCurrentRadioStation();
-        int expected = 1;
-        assertEquals(expected, actual);
+        assertEquals(1, radio.getCurrentRadioStation());
     }
 
     @Test
     public void NumberStationFifthTest() {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(-1);
-        int actual = radio.getCurrentRadioStation();
-        int expected = 0;
-        assertEquals(expected, actual);
+        assertEquals(0, radio.getCurrentRadioStation());
     }
+
+    @Test
+    public void NumberStationSixthTest() {
+        Radio radio = new Radio();
+        radio.setCurrentRadioStation(11);
+        assertEquals(0, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void NumberStationSeventhTest() {
+        Radio radio = new Radio();
+        radio.setCurrentRadioStation(9);
+        assertEquals(9, radio.getCurrentRadioStation());
+    }
+
 
     //Тестируем увеличение звука
     @Test
     public void CreaseVolumeFirstTest() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.IncreaseVolume();
-        int actual = radio.getCurrentVolume();
-        int expected = 10;
-        assertEquals(expected, actual);
+        assertEquals(100, radio.getCurrentVolume());
     }
 
     @Test
     public void CreaseVolumeSecondTest() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(9);
+        radio.setCurrentVolume(99);
         radio.IncreaseVolume();
-        int actual = radio.getCurrentVolume();
-        int expected = 10;
-        assertEquals(expected, actual);
+        assertEquals(100, radio.getCurrentVolume());
     }
 
     @Test
@@ -141,9 +194,7 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentVolume(0);
         radio.IncreaseVolume();
-        int actual = radio.getCurrentVolume();
-        int expected = 1;
-        assertEquals(expected, actual);
+        assertEquals(1, radio.getCurrentVolume());
     }
 
     @Test
@@ -151,19 +202,31 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentVolume(-1);
         radio.IncreaseVolume();
-        int actual = radio.getCurrentVolume();
-        int expected = 1;
-        assertEquals(expected, actual);
+        assertEquals(1, radio.getCurrentVolume());
     }
 
     @Test
     public void CreaseVolumeFifthTest() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(11);
+        radio.setCurrentVolume(101);
         radio.IncreaseVolume();
-        int actual = radio.getCurrentVolume();
-        int expected = 1;
-        assertEquals(expected, actual);
+        assertEquals(1, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void CreaseVolumeSixthTest() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(1);
+        radio.IncreaseVolume();
+        assertEquals(2, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void CreaseVolumeSeventhTest() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(73);
+        radio.IncreaseVolume();
+        assertEquals(74, radio.getCurrentVolume());
     }
 
 
@@ -171,11 +234,9 @@ public class RadioTest {
     @Test
     public void DecreaseVolumeFirstTest() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.DecreaseVolume();
-        int actual = radio.getCurrentVolume();
-        int expected = 9;
-        assertEquals(expected, actual);
+        assertEquals(99, radio.getCurrentVolume());
     }
 
     @Test
@@ -183,9 +244,7 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentVolume(0);
         radio.DecreaseVolume();
-        int actual = radio.getCurrentVolume();
-        int expected = 0;
-        assertEquals(expected, actual);
+        assertEquals(0, radio.getCurrentVolume());
     }
 
     @Test
@@ -193,9 +252,7 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentVolume(1);
         radio.DecreaseVolume();
-        int actual = radio.getCurrentVolume();
-        int expected = 0;
-        assertEquals(expected, actual);
+        assertEquals(0, radio.getCurrentVolume());
     }
 
     @Test
@@ -203,10 +260,148 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentVolume(-1);
         radio.DecreaseVolume();
-        int actual = radio.getCurrentVolume();
-        int expected = 0;
-        assertEquals(expected, actual);
+        assertEquals(0, radio.getCurrentVolume());
     }
+
+    @Test
+    public void DecreaseVolumeFifthTest() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(101);
+        radio.DecreaseVolume();
+        assertEquals(0, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void DecreaseVolumeSixthTest() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(99);
+        radio.DecreaseVolume();
+        assertEquals(98, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void DecreaseVolumeSeventhTest() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(39);
+        radio.DecreaseVolume();
+        assertEquals(38, radio.getCurrentVolume());
+    }
+
+
+    //Тестируем переключение станций кнопкой NEXT c предварительным изменением количества радиостанций
+    @Test
+    public void NextStationWithGivenAmountFirstTest() {
+        Radio radio = new Radio(77);
+        radio.setCurrentRadioStation(76);
+        radio.NextStation();
+        assertEquals(0, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void NextStationWithGivenAmountSecondTest() {
+        Radio radio = new Radio(77);
+        radio.setCurrentRadioStation(75);
+        radio.NextStation();
+        assertEquals(76, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void NextStationWithGivenAmountThirdTest() {
+        Radio radio = new Radio(77);
+        radio.setCurrentRadioStation(0);
+        radio.NextStation();
+        assertEquals(1, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void NextStationWithGivenAmountFourthTest() {
+        Radio radio = new Radio(77);
+        radio.setCurrentRadioStation(77);
+        radio.NextStation();
+        assertEquals(1, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void NextStationWithGivenAmountFifthTest() {
+        Radio radio = new Radio(77);
+        radio.setCurrentRadioStation(1);
+        radio.NextStation();
+        assertEquals(2, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void NextStationWithGivenAmountSixthTest() {
+        Radio radio = new Radio(77);
+        radio.setCurrentRadioStation(-1);
+        radio.NextStation();
+        assertEquals(1, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void NextStationWithGivenAmountSeventhTest() {
+        Radio radio = new Radio(77);
+        radio.setCurrentRadioStation(42);
+        radio.NextStation();
+        assertEquals(43, radio.getCurrentRadioStation());
+    }
+
+    //Тестируем переключение станций кнопкой PREV c предварительным изменением количества радиостанций
+    @Test
+    public void PrevStationWithGivenAmountFirstTest() {
+        Radio radio = new Radio(47);
+        radio.setCurrentRadioStation(0);
+        radio.PrevStation();
+        assertEquals(46, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void PrevStationWithGivenAmountSecondTest() {
+        Radio radio = new Radio(47);
+        radio.setCurrentRadioStation(46);
+        radio.PrevStation();
+        assertEquals(45, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void PrevStationWithGivenAmountThirdTest() {
+        Radio radio = new Radio(47);
+        radio.setCurrentRadioStation(1);
+        radio.PrevStation();
+        assertEquals(0, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void PrevStationWithGivenAmountFourthTest() {
+        Radio radio = new Radio(47);
+        radio.setCurrentRadioStation(-1);
+        radio.PrevStation();
+        assertEquals(46, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void PrevStationWithGivenAmountFifthTest() {
+        Radio radio = new Radio(47);
+        radio.setCurrentRadioStation(47);
+        radio.PrevStation();
+        assertEquals(46, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void PrevStationWithGivenAmountSixthTest() {
+        Radio radio = new Radio(47);
+        radio.setCurrentRadioStation(45);
+        radio.PrevStation();
+        assertEquals(44, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void PrevStationWithGivenAmountSeventhTest() {
+        Radio radio = new Radio(47);
+        radio.setCurrentRadioStation(21);
+        radio.PrevStation();
+        assertEquals(20, radio.getCurrentRadioStation());
+    }
+
 
 
 }
